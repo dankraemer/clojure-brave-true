@@ -56,9 +56,53 @@
 ;; Exercise 2
 
 (defn append
-  [col new-suspect]
-  (into col new-suspect))
+  [suspects new-suspect]
+  (into suspects new-suspect))
 
-(append {:a 1} {:b 2})
+(append {:a 1 :b 2} {:c 3})
 
+;; Exercise 3
+
+(defn validate
+  [suspect]
+  (and (:name suspect)
+        (:glitter-index suspect)
+        suspect) )
+
+(def suspect-ok {:name "daniel" :glitter-index 12})
+(def suspect-bad {:name "leniad"})
+
+(validate suspect-ok)
+
+(defn new-append
+  [suspects new-suspect]
+  (if (validate new-suspect)
+    (into suspects new-suspect)
+    suspects))
+
+(new-append {} suspect-ok)
+(new-append {} suspect-bad)
+
+;; Exercise 4
+
+(defn vectorize
+  [{:keys [name glitter-index]}]
+  (conj [] name glitter-index))
+
+(vectorize suspect-ok)
+
+(defn csv-maker
+  [{:keys [name glitter-index]}]
+  (clojure.string/join ","
+                       (conj [] name glitter-index)))
+
+(csv-maker suspect-ok)
+(map csv-maker glitter-filter-result)
+
+(defn csv-serializer
+  [suspects]
+  (clojure.string/join "\n"
+                       (map csv-maker suspects)))
+
+(csv-serializer glitter-filter-result)
 
