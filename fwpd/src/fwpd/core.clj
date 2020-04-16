@@ -45,3 +45,20 @@
 
 (glitter-filter 3 (mapify (parse (slurp filename))))
 
+
+;; Exercise 1
+
+(def glitter-filter-result
+  (glitter-filter 3 (mapify (parse (slurp filename)))))
+
+(map :name glitter-filter-result)
+
+;; Exercise 2
+
+(defn append
+  [col new-suspect]
+  (into col new-suspect))
+
+(append {:a 1} {:b 2})
+
+
