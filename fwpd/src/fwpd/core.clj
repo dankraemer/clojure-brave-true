@@ -1,4 +1,5 @@
-(ns fwpd.core)
+(ns fwpd.core
+  (:require [clojure.string :as clojure.string]))
 
 (def filename "suspects.csv")
 
