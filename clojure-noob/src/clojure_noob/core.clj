@@ -9,36 +9,46 @@
 
 (defn train []
   "Choo choo")
+;; => #'clojure-noob.core/train
 
 (defn train2 []
   "Choo choo 2")
+;; => #'clojure-noob.core/train2
 
 (if true
   (do (println "Sucess")
-  "By Zeus`s hammer")
+      "By Zeus`s hammer")
   (do (println "Failure")
-  "By Aquaman`s trident"))
+      "By Aquaman`s trident"))
+;; => "By Zeus`s hammer"
 
 (if false
   "By Odin`s Elbow")
+;; => nil
 
 (when true
   (println "Success!")
   "Abra Cadabra")
+;; => "Abra Cadabra"
 
 (nil? nil)
+;; => true
 
 (if "bears eat beets"
   "bears beets Battlestar Galactica")
+;; => "bears beets Battlestar Galactica"
 
 (if nil
   "This won`t be the result because nil is falsey"
   "nil is falsey")
+;; => "nil is falsey"
 
 (or false nil :large_I_meant_venti :why_cant_I_just_say_large)
+;; => :large_I_meant_venti
 
 (or (= 0 1)
     (= "yes" "no"))
+;; => false
 
 (or nil)
 
@@ -51,7 +61,7 @@
 
 (defn error-message
   [severity]
-  (str "OH MY GOD! IT`S A DISASTER! WE`RE " 
+  (str "OH MY GOD! IT`S A DISASTER! WE`RE "
        (if (= severity :mild)
          "MILDLY INCONVENIENCED"
          "DOOOOOOOMED")))
@@ -124,7 +134,7 @@
 (hash-set 1 1 2 2)
 
 (conj #{:a :b} :b)
- 
+
 (set [1 2 3 3 3 4 4])
 
 (def set-test
@@ -169,7 +179,7 @@
 (defn x-chop ;; Arity overloading
   "Describe the kind of chop you're inflicting on someone"
   ([name chop-type]
-     (str "I " chop-type " chop " name "! Take that!"))
+   (str "I " chop-type " chop " name "! Take that!"))
   ([name]
    (x-chop name "karate")))
 
@@ -298,8 +308,8 @@
 
 (defn matching-part
   [part]
-  {:name (clojure.string/replace (:name part) #"^left-" "right-") 
-   :size (:size part)}) 
+  {:name (clojure.string/replace (:name part) #"^left-" "right-")
+   :size (:size part)})
 
 (matching-part {:name "left-ear" :size 4})
 
@@ -322,7 +332,7 @@
 (let [x 3]
   x)
 
-(def dalmatian-list 
+(def dalmatian-list
   ["Pongo" "Perdita" "Puppy 1" "Puppy 2"])
 
 (let [dalmatians (take 2 dalmatian-list)]
@@ -373,7 +383,7 @@
 
 (defn matching-part
   [part]
-  {:name (clojure.string/replace (:name part) #"^left-" "right-") 
+  {:name (clojure.string/replace (:name part) #"^left-" "right-")
    :size (:size part)})
 
 (matching-part {:name "left-ear" :size 3})
@@ -403,7 +413,7 @@
   [asym-body-parts]
   (reduce (fn [final-body-parts part]
             (into final-body-parts (set [part (matching-part part)])) )
-          [] 
+          []
           asym-body-parts))
 
 (better-symmetrize-body-parts asym-hobbit-body-parts)
@@ -485,4 +495,3 @@
   1.2
   1/5
   (+ 1 2))
-
