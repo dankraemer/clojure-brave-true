@@ -194,16 +194,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ((or + -) 1 2 3)
+;; => 6
 
 ((and (= 1 1) +) 1 2 3)
+;; => 6
 
 ((first [+ 0]) 1 2 3)
+;; => 6
 
 (inc 1.1)
+;; => 2.1
 
 (map inc [0 1 2 3])
+;; => (1 2 3 4)
 
 (+ (inc 199) (/ 100 (- 7 2)))
+;; => 220
 
 (defn too-enthusiastic
   "Return a cheer that might be a bit too enthusiastic"
@@ -212,7 +218,10 @@
        "MAN SLASH WOMAN EVER I LOVE YOU AND WE SHOULD RUN AWAY SOMEWHERE"))
 
 (too-enthusiastic "zelda")
+;; => "OH MY GOD! zelda YOU ARE MOST DEFINITELY LIKE THE BEST MAN SLASH WOMAN EVER I LOVE YOU AND WE SHOULD RUN AWAY SOMEWHERE"
+
 (doc too-enthusiastic)
+;; => nil
 
 (defn x-chop ;; Arity overloading
   "Describe the kind of chop you're inflicting on someone"
@@ -222,8 +231,10 @@
    (x-chop name "karate")))
 
 (x-chop "Kayne West" "slap")
-(x-chop "Kayne West")
+;; => "I slap chop Kayne West! Take that!"
 
+(x-chop "Kayne West")
+;; => "I karate chop Kayne West! Take that!"
 
 (defn codger-communication
   [whippersnapper]
@@ -234,6 +245,7 @@
   (map codger-communication whippersnappers))
 
 (codger "Billy" "Anne-Marie" "The Incredible Bulk")
+;; => ("Get off my lawn! Billy!!!" "Get off my lawn! Anne-Marie!!!" "Get off my lawn! The Incredible Bulk!!!")
 
 (defn favorite-things
   [name & things] ;; things is a list
@@ -241,12 +253,14 @@
        (clojure.string/join ", " things)))
 
 (favorite-things "Doreen" "gum" "shoes" "kara-te")
+;; => "Hi, Doreen, here are my favorite things: gum, shoes, kara-te"
 
 (defn my-first
-  [[first-thing]]
+  [[first-thing]] ;; vector destructuring in the arguments
   first-thing)
 
 (my-first ["oven" "bike" "war-axe"])
+;; => "oven"
 
 (defn chooser ;; Destructure a Vector
   [[first-choice second-choice & unimportant-choices]]
@@ -257,6 +271,7 @@
                 (clojure.string/join ", " unimportant-choices))))
 
 (chooser ["Marmalade" "Handsome Jack" "Pigpen" "Aquaman"])
+;; => nil
 
 
 (defn announce-treasure-location
@@ -265,6 +280,7 @@
   (println (str "Treasure lng: " lng)))
 
 (announce-treasure-location {:lat 28.22 :lng 81.33})
+;; => nil
 
 (defn announce-treasure-location2
   [{:keys [lat lng] :as treasure-location}]
@@ -273,6 +289,7 @@
   (prn treasure-location))
 
 (announce-treasure-location2 {:lat 28.22 :lng 81.33})
+;; => nil
 
 (defn ilustrative-func
   []
@@ -281,6 +298,7 @@
   "joe")
 
 (ilustrative-func)
+;; => "joe"
 
 (defn number-comment
   [x]
@@ -289,9 +307,13 @@
     "That number is OK I guess"))
 
 (number-comment 5)
+;; => "That number is OK I guess"
 (number-comment 8)
+;; => "Oh my gosh! What a big number!"
 
-;; Anonymous functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Anonymous Functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (map (fn [name] (str "Hi, " name))
      ["Darth Vader" "Mr Magoo"])
