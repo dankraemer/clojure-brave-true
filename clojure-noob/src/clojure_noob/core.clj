@@ -51,10 +51,13 @@
 ;; => false
 
 (or nil)
+;; => nil
 
 (and :free_wifi :hot_cofee)
+;; => :hot_cofee
 
 (and :feeling_super_cool nil false)
+;; => nil
 
 (def failed-protagonist-names
   ["Larry Poter" "Doreen the Explorer" "The Incredible Bulk"])
@@ -72,48 +75,68 @@
 ;; Maps
 
 {:first-name "Charlie"
- :last-name "McFishwich"}
+ :last-name  "McFishwich"}
+;; => {:first-name "Charlie", :last-name "McFishwich"}
 
 {"string-key" +}
+;; => {"string-key" #function[clojure.core/+]}
 
 {:name {:first "John" :middle "Jacob" :last "Jingleheimerschmidt"}}
+;; => {:name {:first "John", :middle "Jacob", :last "Jingleheimerschmidt"}}
 
 (hash-map :a 1 :b 2)
+;; => {:b 2, :a 1}
 
 (get {:a 0 :b 1} :b)
+;; => 1
 
 (get {:a 0 :b {:c "ho hum"}} :b)
+;; => {:c "ho hum"}
 
 (get {:a 0 :b 1} :c)
+;; => nil
 
 (get {:a 0 :b 1} :c "unicorns?")
+;; => "unicorns?"
 
 (get-in {:a 0 :b {:c "ho hum"}} [:b :c])
+;; => "ho hum"
 
 ({:name "Daniel"} :name)
+;; => "Daniel"
 
 (:name {:name "Daniel"})
+;; => "Daniel"
 
 (:a {:a 1 :b 2 :c 3})
+;; => 1
 
 (:d {:a 1 :b 2 :c 3} "No gnome knows homes like Noah knows")
+;; => "No gnome knows homes like Noah knows"
 
 ;; Vectors
 
 [3 2 0]
+;; => [3 2 0]
 
 (get [3 2 1] 0)
+;; => 3
 
 (def mixed-array
   ["a" {:name "Pugsley Winterbotton"} "c"])
 
 (get mixed-array 0)
+;; => "a"
 (get mixed-array 1)
+;; => {:name "Pugsley Winterbotton"}
 (get mixed-array 2)
+;; => "c"
 
 (vector "creepy" "full" "moon")
+;; => ["creepy" "full" "moon"]
 
 (conj [0 1 2 3] 4 5 6)
+;; => [0 1 2 3 4 5 6]
 
 ;; Lists
 
